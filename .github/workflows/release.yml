@@ -10,9 +10,9 @@ permissions:
 
 env:
   # version up したらここを更新する
-  NYANQL_REF: v0.0.18
-  NYAN8_REF: v0.0.15
-  NYANPUI_REF: v0.0.12
+  NYANQL_REF: v0.0.20
+  NYAN8_REF: v0.0.17
+  NYANPUI_REF: v0.0.14
 
 jobs:
   build:
@@ -57,7 +57,7 @@ jobs:
       - name: Set up Go
         uses: actions/setup-go@v6
         with:
-          go-version: '1.24'
+          go-version: '1.26.3'
 
       - name: Build and Package Starter Kit
         shell: bash
