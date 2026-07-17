@@ -23,10 +23,10 @@ jobs:
 
     steps:
       - name: Check out Starter Kit repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
 
       - name: Check out NyanQL at pinned ref
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
         with:
           repository: NyanQL/NyanQL
           ref: ${{ env.NYANQL_REF }}
@@ -34,7 +34,7 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Check out Nyan8 at pinned ref
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
         with:
           repository: NyanQL/Nyan8
           ref: ${{ env.NYAN8_REF }}
@@ -42,7 +42,7 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Check out NyanPUI at pinned ref
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
         with:
           repository: NyanQL/NyanPUI
           ref: ${{ env.NYANPUI_REF }}
@@ -91,7 +91,7 @@ jobs:
           zip -r "${zip_name}" release_package
 
       - name: Upload artifact
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: ${{ matrix.os }}-starter-package
           path: NyanKIT_${{ github.ref_name }}_${{ matrix.os }}.zip
@@ -101,25 +101,25 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Download Linux package
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v8
         with:
           name: ubuntu-latest-starter-package
           path: artifacts/linux
 
       - name: Download macOS package
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v8
         with:
           name: macos-latest-starter-package
           path: artifacts/macos
 
       - name: Download Windows package
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v8
         with:
           name: windows-latest-starter-package
           path: artifacts/windows
 
       - name: Create GitHub Release & Upload Assets
-        uses: softprops/action-gh-release@v1
+        uses: softprops/action-gh-release@v3
         with:
           tag_name: ${{ github.ref_name }}
           name: Starter Kit Release ${{ github.ref_name }}
